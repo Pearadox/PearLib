@@ -39,12 +39,8 @@ public class PearPIDController {
    * Call this every iteration of the robot loop in order to update errors
    * @param measurement measurement
    */
-  public void update(double measurement) {
-    update(measurement, setpoint);
-  }
-
-  public void update(double measurement, double setpoint) {
-    update(measurement, setpoint, Timer.getFPGATimestamp() - lastTimestamp);
+  public void update(double measurement, double dt) {
+    update(measurement, setpoint, dt);
   }
 
   public void update(double measurement, double setpoint, double dt) {
@@ -53,7 +49,6 @@ public class PearPIDController {
     this.setpoint = setpoint;
     error = setpoint - measurement;
     changeError = (error - lastError) / dt;
-    lastTimestamp = Timer.getFPGATimestamp();
   }
 
   /**

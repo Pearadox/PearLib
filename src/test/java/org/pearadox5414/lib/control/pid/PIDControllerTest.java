@@ -7,9 +7,11 @@ public class PIDControllerTest {
 
   @Test
   public void testError() {
+
+
     var controller = new PearPIDController();
 
-    controller.update(5, 3);
+    controller.update(5, 3, 0.02);
     assertEquals(-2, controller.getError(), 1E-9);
   }
 
